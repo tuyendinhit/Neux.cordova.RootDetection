@@ -4,7 +4,21 @@
 @implementation RootDetection
 
 - (void)detect:(CDVInvokedUrlCommand *)command {
-    exit(0);
+    CDVPluginResult *pluginResult;
+
+    @try
+    {
+        bool jailbroken = [self jailbroken];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:jailbroken];
+    }
+    @catch (NSException *exception)
+    {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:exception.reason];
+    }
+    @finally
+    {
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
 }
 
 - (bool) jailbroken {
