@@ -1,9 +1,9 @@
 #import "RootDetection.h"
 #import "Cordova/CDV.h"
 
-@implementation Exit
+@implementation RootDetection
 
-- (void)exit:(CDVInvokedUrlCommand *)command {
+- (void)detect:(CDVInvokedUrlCommand *)command {
     exit(0);
 }
 
