@@ -9,6 +9,7 @@
     @try
     {
         bool jailbroken = [self jailbroken];
+        NSLog(jailbroken ? @"Yes root!" : @"No no-root!");
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:jailbroken];
     }
     @catch (NSException *exception)
